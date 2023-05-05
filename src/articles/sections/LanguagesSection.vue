@@ -6,12 +6,17 @@ const languageList = languages.map(function (language) {
   return language.name;
 });
 const selectedLanguage = ref<Language>(languages[0]);
+const isShow = ref<boolean>(true);
 function changeLanguage(value: string) {
   const newLanguage = languages.find(function (language) {
     return language.name == value;
   });
   if (newLanguage) {
-    selectedLanguage.value = newLanguage;
+    isShow.value = false;
+    setTimeout(function () {
+      selectedLanguage.value = newLanguage;
+      isShow.value = true;
+    }, 400);
   }
 }
 </script>
@@ -20,16 +25,23 @@ function changeLanguage(value: string) {
   <section>
     <heading-part label="Languages" />
     <div class="skill_languages">
-      <div class="skill_languages-content">
-        <h3 class="skill_languages-name">{{ selectedLanguage.name }}</h3>
-        <div class="skill_languages-name-underline"></div>
-
-        <switch-content-organism
-          name="languages"
-          class="skill_languages-detail"
-          :details="selectedLanguage.details"
-        />
-      </div>
+      <XyzTransition
+        appear
+        mode="out-in"
+      >
+        <div
+          v-if="isShow"
+          class="skill_languages-content"
+        >
+          <h3 class="skill_languages-name">{{ selectedLanguage.name }}</h3>
+          <div class="skill_languages-name-underline"></div>
+          <switch-content-organism
+            name="languages"
+            class="skill_languages-detail"
+            :details="selectedLanguage.details"
+          />
+        </div>
+      </XyzTransition>
 
       <select-list-organism
         class="skill_languages-list"

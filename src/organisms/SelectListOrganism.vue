@@ -9,7 +9,7 @@ const emits = defineEmits<{
   (e: 'on-change', value: string): void;
 }>();
 
-const selectedLanguage = ref<string>();
+const selectedLanguage = ref<string>(props.options[0]);
 function updateValue(value: string) {
   selectedLanguage.value = value;
   if (selectedLanguage.value) {
@@ -24,6 +24,8 @@ function updateValue(value: string) {
     <ul class="select-list_menu">
       <li
         v-for="option in options"
+        class="xyz-nested"
+        xyz="fade-100% stagger-0.5 delay-1"
         :key="option"
       >
         <select-item-part

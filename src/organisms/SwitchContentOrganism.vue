@@ -8,6 +8,7 @@ const props = defineProps<{
 
 const { details } = toRefs(props);
 const selectedDetail = ref<Detail>(details.value[0]);
+const isShow = ref<boolean>(true);
 watch(details, function () {
   selectedDetail.value = details.value[0];
 });
@@ -16,7 +17,11 @@ function changeDetail(value: string) {
     return detail.title == value;
   });
   if (newDetail) {
-    selectedDetail.value = newDetail;
+    isShow.value = false;
+    setTimeout(function () {
+      selectedDetail.value = newDetail;
+      isShow.value = true;
+    }, 400);
   }
 }
 </script>
@@ -42,7 +47,17 @@ function changeDetail(value: string) {
 
     <!-- 表示コンテンツ -->
     <div class="switch-content_text">
-      <div>{{ selectedDetail.description }}</div>
+      <XyzTransition
+        appear
+        mode="out-in"
+      >
+        <div
+          v-if="isShow"
+          xyz="fade-100% up-2"
+        >
+          {{ selectedDetail.description }}
+        </div>
+      </XyzTransition>
     </div>
   </div>
 </template>
