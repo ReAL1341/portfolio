@@ -1,0 +1,51 @@
+:root {
+  --base-color: #222222;
+  --base-deep-color: #111111;
+  --main-color: #ffd700;
+  --text-color: #ffffff;
+  --main-font: 'Itim';
+  --title-font: 'Pacifico';
+}
+html,
+body {
+  background-color: var(--base-color);
+  color: var(--text-color);
+  font-family: var(--main-font);
+  font-size: 2.2vh;
+  scrollbar-width: none; /*Firefox*/
+  user-select: none;
+  -ms-overflow-style: none; /*Internet Explore*/
+}
+#app {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+body::-webkit-scrollbar {
+  display: none; /*Google Chrome、Safari、Microsoft Edge*/
+}
+
+h1 {
+  font-family: var(--heading-font);
+}
+html,
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+.common_display-none {
+  display: none;
+}
+
+.common_display-none {
+  display: none;
+}
