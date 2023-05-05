@@ -3,6 +3,13 @@ import App from './App.vue';
 const app = createApp(App);
 
 /**
+ * 外部ライブラリ
+ */
+import VueAnimXyz from '@animxyz/vue3';
+import '@animxyz/core';
+app.use(VueAnimXyz);
+
+/**
  * articles
  */
 import SkillArticle from './articles/SkillArticle.vue';

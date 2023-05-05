@@ -46,14 +46,21 @@ function closeNavigation() {
         :label="currentPage"
       />
 
-      <top-article
-        v-if="currentPage == 'TOP'"
-        class="app_main-article"
-      />
-      <skill-article
-        v-else-if="currentPage == 'SKILL'"
-        class="app_main-article"
-      />
+      <XyzTransition
+        appear
+        mode="out-in"
+      >
+        <top-article
+          v-if="currentPage == 'TOP'"
+          xyz="fade-100% up-3"
+          class="app_main-article"
+        />
+        <skill-article
+          v-else-if="currentPage == 'SKILL'"
+          xyz="fade-100% up-3"
+          class="app_main-article"
+        />
+      </XyzTransition>
     </main>
   </div>
 </template>
