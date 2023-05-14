@@ -22,8 +22,10 @@ app.component('top-article', TopArticle);
  */
 import LanguagesSection from './articles/sections/LanguagesSection.vue';
 import ProfileSection from './articles/sections/ProfileSection.vue';
+import ToolsSection from './articles/sections/ToolsSection.vue';
 app.component('languages-section', LanguagesSection);
 app.component('profile-section', ProfileSection);
+app.component('tools-section', ToolsSection);
 
 /**
  * organisms
