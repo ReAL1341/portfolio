@@ -1,12 +1,12 @@
 /* ===============
     pages
  ===============*/
-export const pages = ['TOP', 'SKILL', 'ACHIEVEMENT'];
+export const pages = ['PROFILE', 'SKILL', 'ACHIEVEMENT'];
 
 /* ===============
-    languages
+    skills
  ===============*/
-export interface Language {
+export interface Skill {
   name: string;
   details: Array<Detail>;
 }
@@ -23,7 +23,7 @@ function detail(title: string, description: string): Detail {
   };
 }
 
-export const languages: Array<Language> = [
+export const skills: Array<Skill> = [
   {
     name: 'PHP',
     details: [
@@ -143,40 +143,27 @@ export const languages: Array<Language> = [
       ),
     ],
   },
-];
-
-/* ===============
-    tools
- ===============*/
-export interface Tool {
-  name: string;
-  description: string;
-}
-
-function tool(name: string, description: string) {
-  return {
-    name: name,
-    description: description,
-  };
-}
-
-export const tools: Array<Tool> = [
-  tool(
-    'Git',
-    '\
-    \
-    '
-  ),
-  tool(
-    'Docker',
-    '\
-    \
-    '
-  ),
-  tool(
-    'MySQL',
-    '\
-    \
-    '
-  ),
+  {
+    name: 'Other',
+    details: [
+      detail(
+        'Git',
+        '\
+        \
+        '
+      ),
+      detail(
+        'SQL',
+        '\
+        \
+        '
+      ),
+      detail(
+        'Docker',
+        '\
+        \
+        '
+      ),
+    ],
+  },
 ];

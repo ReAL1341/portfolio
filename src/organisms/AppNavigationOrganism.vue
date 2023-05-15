@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   modelValue: string;
   pages: Array<string>;
 }>();
@@ -14,22 +14,25 @@ function updateValue(value: string) {
 </script>
 
 <template>
-  <ul class="navigation">
-    <li
-      v-for="page in pages"
-      class="navigation_item"
-      :key="page"
-    >
-      <select-item-part
-        name="navigation"
-        class="navigation_item-label"
-        :class="{ selected: modelValue == page }"
-        :label="page"
-        :id="'navigation_' + page"
-        @on-change="updateValue"
-      />
-    </li>
-  </ul>
+  <nav>
+    <ul class="navigation">
+      <li
+        v-for="page in pages"
+        class="navigation_item"
+        :key="page"
+      >
+        <select-item-part
+          name="navigation"
+          class="navigation_item-label"
+          :checked="modelValue == page"
+          :class="{ selected: modelValue == page }"
+          :label="page"
+          :id="'navigation_' + page"
+          @on-change="updateValue"
+        />
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style scoped>

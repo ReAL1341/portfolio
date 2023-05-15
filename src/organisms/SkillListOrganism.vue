@@ -10,6 +10,7 @@ const emits = defineEmits<{
 }>();
 
 const selectedLanguage = ref<string>(props.options[0]);
+console.log(selectedLanguage.value);
 function updateValue(value: string) {
   selectedLanguage.value = value;
   if (selectedLanguage.value) {
@@ -31,6 +32,7 @@ function updateValue(value: string) {
         <select-item-part
           name="select-list"
           class="select-list_menu-text"
+          :checked="selectedLanguage == option"
           :class="{ selected: selectedLanguage == option }"
           :label="option"
           :id="'select-list_' + option"

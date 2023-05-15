@@ -1,6 +1,5 @@
 <template>
   <section>
-    <heading-part label="Profile" />
     <div class="top_profile">
       <div class="top_profile-icon">
         <img

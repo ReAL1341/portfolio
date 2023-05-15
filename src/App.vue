@@ -22,15 +22,12 @@ function closeNavigation() {
     </span>
 
     <!-- ナビゲーション -->
-    <nav
+    <app-navigation-organism
+      v-model="currentPage"
       class="app_navigation"
       :class="{ open: isOpen, close: !isOpen }"
-    >
-      <navigation-organism
-        v-model="currentPage"
-        :pages="pages"
-      />
-    </nav>
+      :pages="pages"
+    />
 
     <!-- ナビゲーション以外をクリックでナビゲーションを閉じる -->
     <div
@@ -45,18 +42,23 @@ function closeNavigation() {
         class="app_main-title"
         :label="currentPage"
       />
-
       <XyzTransition
         appear
         mode="out-in"
       >
-        <top-article
-          v-if="currentPage == 'TOP'"
+        <!-- 定数の管理が課題 -->
+        <profile-article
+          v-if="currentPage == 'PROFILE'"
           xyz="fade-100% up-3"
           class="app_main-article"
         />
         <skill-article
           v-else-if="currentPage == 'SKILL'"
+          xyz="fade-100% up-3"
+          class="app_main-article"
+        />
+        <achievement-article
+          v-else-if="currentPage == 'ACHIEVEMENT'"
           xyz="fade-100% up-3"
           class="app_main-article"
         />
@@ -109,7 +111,7 @@ function closeNavigation() {
 }
 .app_main-title {
   margin: auto;
-  margin-bottom: 1.8rem;
+  margin-bottom: 6rem;
   width: 80%;
 }
 .app_main-article {

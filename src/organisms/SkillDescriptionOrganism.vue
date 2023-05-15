@@ -37,6 +37,7 @@ function changeDetail(value: string) {
         <select-item-part
           name="switch-content"
           class="switch-content_tab-text"
+          :checked="selectedDetail.title == detail.title"
           :class="{ selected: selectedDetail.title == detail.title }"
           :label="detail.title"
           :id="'switch-content_' + detail.title"

@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const props = defineProps<{
+defineProps<{
   id: string;
   label: string;
   name: string;
+  checked: boolean;
 }>();
 
 const emits = defineEmits<{
   (e: 'on-change', value: string): void;
 }>();
 
-const selectedValue = ref<string>();
-
-function onChange() {
-  if (selectedValue.value) {
-    emits('on-change', selectedValue.value);
+function onChange(event: Event) {
+  if (event.target instanceof HTMLInputElement) {
+    emits('on-change', event.target.value);
   }
 }
 </script>
@@ -23,10 +20,9 @@ function onChange() {
 <template>
   <label :for="id">
     <input
-      v-model="selectedValue"
       class="common_display-none"
       type="radio"
-      :checked="selectedValue == label"
+      :checked="checked"
       :id="id"
       :name="name"
       :value="label"
