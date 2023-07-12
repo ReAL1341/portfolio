@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Skill, skills } from '../const';
+import { SkillDetail, SkillList } from '@Components';
+import { Skill, skills } from '@/const';
 
 const selectedSkill = ref<Skill>(skills[0]);
 const isVisible = ref<boolean>(true);
@@ -36,7 +36,7 @@ const skillNameList = skills.map(function (skill) {
       >
         <h3 class="skill_name">{{ selectedSkill.name }}</h3>
         <div class="skill_name-underline"></div>
-        <skill-description-organism
+        <SkillDetail
           name="languages"
           class="skill_detail"
           :details="selectedSkill.details"
@@ -44,7 +44,7 @@ const skillNameList = skills.map(function (skill) {
       </div>
     </XyzTransition>
 
-    <skill-list-organism
+    <SkillList
       class="skill_list"
       :options="skillNameList"
       @on-change="changeDisplay"

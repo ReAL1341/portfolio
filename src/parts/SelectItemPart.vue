@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
+  checked: boolean;
   id: string;
   label: string;
   name: string;
-  checked: boolean;
 }>();
 
 const emits = defineEmits<{

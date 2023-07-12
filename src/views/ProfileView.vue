@@ -13,7 +13,7 @@
         <p class="background">
           2024年 東京工業大学 工学院電気電子系 卒業見込み
         </p>
-        <p class="pasttime">趣味：プログラミング、音ゲー</p>
+        <p class="pasttime">趣味：プログラミング、音ゲー、お酒</p>
       </div>
     </div>
   </section>

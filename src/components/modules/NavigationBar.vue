@@ -36,6 +36,10 @@ function updateValue(value: string) {
 </template>
 
 <style scoped>
+nav {
+  background-color: var(--base-deep-color);
+  padding-top: 7rem;
+}
 .navigation {
   height: 100%;
 }
@@ -49,9 +53,9 @@ function updateValue(value: string) {
   font-weight: bold;
   transform: scale(1);
   transition: all 0.3s ease-in;
-  -moz-osx-font-smoothing: grayscale; /* scaleのアニメーションを滑らかにするため */
+  -moz-osx-font-smoothing: grayscale;
   -webkit-transform: scale(1);
-  -webkit-font-smoothing: antialiased; /* scaleのアニメーションを滑らかにするため */
+  -webkit-font-smoothing: antialiased;
 }
 .navigation_item-label:hover {
   cursor: pointer;

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const props = defineProps<{
   options: Array<string>;
 }>();
@@ -10,7 +8,6 @@ const emits = defineEmits<{
 }>();
 
 const selectedLanguage = ref<string>(props.options[0]);
-console.log(selectedLanguage.value);
 function updateValue(value: string) {
   selectedLanguage.value = value;
   if (selectedLanguage.value) {
@@ -28,16 +25,14 @@ function updateValue(value: string) {
         class="xyz-nested"
         xyz="fade-100% stagger-0.5 delay-1"
         :key="option"
+        @click="updateValue(option)"
       >
-        <select-item-part
-          name="select-list"
+        <span
           class="select-list_menu-text"
-          :checked="selectedLanguage == option"
           :class="{ selected: selectedLanguage == option }"
-          :label="option"
-          :id="'select-list_' + option"
-          @on-change="updateValue"
-        />
+        >
+          {{ option }}
+        </span>
       </li>
     </ul>
     <div class="select-list_line"></div>

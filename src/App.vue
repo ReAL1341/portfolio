@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { pages } from './const';
+import { pages } from '@/const';
+import { HamburgerMenu, PageTitle, NavigationBar } from '@Components';
+import ProfileView from './views/ProfileView.vue';
+import SkillView from './views/SkillView.vue';
+import AchievementView from './views/AchievementView.vue';
 
 const currentPage = ref(pages[0]);
 const isOpen = ref(false);
+
+function changeNavigationStatus() {
+  isOpen.value = !isOpen.value;
+}
 
 function closeNavigation() {
   isOpen.value = false;
@@ -14,15 +21,14 @@ function closeNavigation() {
   <div>
     <!-- ハンバーガーメニュー -->
     <span class="app_menu-icon">
-      <hamburger-menu-part
-        v-model="isOpen"
-        id="app_menu-icon"
-        name="app_menu-icon"
+      <HamburgerMenu
+        :isOpen="isOpen"
+        @click="changeNavigationStatus"
       />
     </span>
 
     <!-- ナビゲーション -->
-    <app-navigation-organism
+    <NavigationBar
       v-model="currentPage"
       class="app_navigation"
       :class="{ open: isOpen, close: !isOpen }"
@@ -38,26 +44,27 @@ function closeNavigation() {
 
     <!-- 記事 -->
     <main class="app_main">
-      <title-part
+      <PageTitle
         class="app_main-title"
-        :label="currentPage"
+        :text="currentPage"
       />
       <XyzTransition
         appear
         mode="out-in"
       >
+        <!-- <router-view /> -->
         <!-- 定数の管理が課題 -->
-        <profile-article
+        <ProfileView
           v-if="currentPage == 'PROFILE'"
           xyz="fade-100% up-3"
           class="app_main-article"
         />
-        <skill-article
+        <SkillView
           v-else-if="currentPage == 'SKILL'"
           xyz="fade-100% up-3"
           class="app_main-article"
         />
-        <achievement-article
+        <AchievementView
           v-else-if="currentPage == 'ACHIEVEMENT'"
           xyz="fade-100% up-3"
           class="app_main-article"
@@ -78,10 +85,8 @@ function closeNavigation() {
   z-index: 10;
 }
 .app_navigation {
-  background-color: var(--base-deep-color);
   height: 100%;
   left: 0;
-  padding-top: 5rem;
   position: fixed;
   top: 0;
   transition: all 0.3s ease;
