@@ -15,6 +15,10 @@ export default defineConfig({
       dirs: ['./src/components/modules/**'],
     }),
   ],
+  build: {
+    outDir: './output',
+    emptyOutDir: true,
+  },
   resolve: {
     alias: {
       '@': '/src',
