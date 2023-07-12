@@ -14,10 +14,11 @@ function changeTab(selectedTab: string) {
 </script>
 
 <template>
-  <ul>
+  <ul class="skill-tab-list__wrapper">
     <li
       v-for="tab in tabs"
-      class="switch-content_tab-text"
+      class="skill-tab-list__item"
+      :class="{ selected: tab == selectedTab }"
       :key="tab"
       @click="changeTab(tab)"
     >
@@ -27,24 +28,28 @@ function changeTab(selectedTab: string) {
 </template>
 
 <style scoped>
-.switch-content_tab {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 2.5rem;
+.skill-tab-list__wrapper {
+  padding: 0 1rem;
 }
-.switch-content_tab > li {
-  margin-right: 2rem;
-}
-.switch-content_tab-text {
+.skill-tab-list__item {
   box-sizing: border-box;
   color: #999999;
   display: inline-block;
   font-size: 1.5rem;
   font-weight: bold;
+  margin-left: 2rem;
   transform: scale(1);
   transition: all 0.3s ease-in;
   -moz-osx-font-smoothing: grayscale;
   -webkit-transform: scale(1);
   -webkit-font-smoothing: antialiased;
+}
+.skill-tab-list__item:hover {
+  cursor: pointer;
+}
+.skill-tab-list__item.selected {
+  color: var(--text-color);
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
 }
 </style>

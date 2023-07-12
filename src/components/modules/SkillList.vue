@@ -17,9 +17,9 @@ function updateValue(value: string) {
 </script>
 
 <template>
-  <div class="select-list">
-    <div class="select-list_line"></div>
-    <ul class="select-list_menu">
+  <div class="skill-list__wrapper">
+    <div class="skill-list__line"></div>
+    <ul class="skill-list__content">
       <li
         v-for="option in options"
         class="xyz-nested"
@@ -28,23 +28,23 @@ function updateValue(value: string) {
         @click="updateValue(option)"
       >
         <span
-          class="select-list_menu-text"
+          class="skill-list__text"
           :class="{ selected: selectedLanguage == option }"
         >
           {{ option }}
         </span>
       </li>
     </ul>
-    <div class="select-list_line"></div>
+    <div class="skill-list__line"></div>
   </div>
 </template>
 
 <style scoped>
-.select-list {
+.skill-list__wrapper {
   box-sizing: border-box;
   padding: 0 1rem;
 }
-.select-list_line {
+.skill-list__line {
   background-color: var(--text-color);
   border-radius: 1rem;
   height: 0.25rem;
@@ -53,11 +53,11 @@ function updateValue(value: string) {
 .select-list_menu-input {
   display: none;
 }
-.select-list_menu > li {
+.skill-list__content > li {
   margin-bottom: 0.5rem;
   text-align: center;
 }
-.select-list_menu-text {
+.skill-list__text {
   box-sizing: border-box;
   display: inline-block;
   font-size: 1.2rem;
@@ -68,14 +68,14 @@ function updateValue(value: string) {
   -webkit-transform: scale(1);
   -webkit-font-smoothing: antialiased;
 }
-.select-list_menu-text:hover {
+.skill-list__text:hover {
   cursor: pointer;
   text-shadow: 0px 0px 1rem var(--main-color);
   transform: scale(1.4);
   transition: all 0.3s ease-out;
   -webkit-transform: scale(1.4);
 }
-.select-list_menu-text.selected {
+.skill-list__text.selected {
   color: var(--main-color);
   transform: scale(1.4);
   -webkit-transform: scale(1.4);

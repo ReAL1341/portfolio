@@ -18,12 +18,12 @@ function changeDisplay(selectedDetailTitle: string) {
   const newDetail = details.value.find(function (detail) {
     return detail.title == selectedDetailTitle;
   });
-  if (newDetail) {
+  if (newDetail && selectedDetail.value.title != newDetail.title) {
     isVisible.value = false;
     setTimeout(function () {
       selectedDetail.value = newDetail;
       isVisible.value = true;
-    }, 400);
+    }, 200);
   }
 }
 </script>
@@ -32,6 +32,7 @@ function changeDisplay(selectedDetailTitle: string) {
   <div>
     <!-- リスト -->
     <SkillTabList
+      class="skill-detail__tab-list"
       :selectedTab="selectedDetail.title"
       :tabs="detailTitleList"
       @change="changeDisplay"
@@ -55,15 +56,7 @@ function changeDisplay(selectedDetailTitle: string) {
 </template>
 
 <style scoped>
-.switch-content_tab-text:hover {
-  cursor: pointer;
-  transform: scale(1.2);
-  transition: all 0.3s ease-out;
-  -webkit-transform: scale(1.2);
-}
-.switch-content_tab-text.selected {
-  color: var(--text-color);
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
+.skill-detail__tab-list {
+  margin-bottom: 1.5rem;
 }
 </style>
